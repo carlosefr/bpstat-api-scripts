@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Carlos Rodrigues <cefrodrigues@gmail.com>
-#
 # Plot a lone series from Bank of Portugal's statistics API.
 #
 # Note: This code is meant as an example and, in order to
 #       maximize readability, lacks proper error handling.
+#
+# Carlos Rodrigues <cefrodrigues@gmail.com>
 #
 
 import requests
