@@ -28,10 +28,10 @@ REFERENCE_TERRITORY_DIMENSION_ID = "63"
 
 
 #
-# GDP at market prices in millions of euros:
+# Portuguese GDP at market prices in millions of euros:
 # https://bpstat.bportugal.pt/serie/12518356
 #
-series_id = 12518356
+series_id = "12518356"
 
 #
 # Series data is contained in a statistics domain dataset and we must figure out which
