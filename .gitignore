@@ -13,4 +13,4 @@ __pycache__
 .coverage
 htmlcov
 
-*venv*
+bpstat-venv
