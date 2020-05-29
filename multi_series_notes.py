@@ -19,7 +19,7 @@ from matplotlib import pyplot
 
 # The base address for all BPstat API calls:
 BPSTAT_API_URL = "https://bpstat.bportugal.pt/data/v1"
-LANGUAGE = "PT"
+LANGUAGE = "EN"
 
 # We'll use these dimensions as labels. The IDs are reliable and should always
 # be defined as strings, not integers, as not all dimension IDs are numeric.
