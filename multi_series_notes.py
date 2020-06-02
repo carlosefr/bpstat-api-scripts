@@ -107,8 +107,12 @@ legends = []
 
 # Split the dataframe by banknote face value and add each one to the chart:
 for face_value_category, group in dataframe.groupby(face_value_label):
-    subplot.plot(group[time_label], group["value"], marker="o")
+    subplot.plot(group[time_label], group["value"], marker=".", linestyle="solid", linewidth=1.0)
     legends.append(face_value_category)
+
+# Show an axis grid in the background:
+subplot.grid("on", which="major", axis="y", linestyle="dotted", linewidth=0.5)
+subplot.set_axisbelow(True)
 
 figure.legend(legends)
 

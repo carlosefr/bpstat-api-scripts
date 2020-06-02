@@ -9,6 +9,7 @@
 # Carlos Rodrigues <cefrodrigues@gmail.com>
 #
 
+import time
 import requests
 import pandas
 
@@ -80,7 +81,7 @@ dataframe[time_label] = pandas.to_datetime(dataframe[time_label])
 columns = dataframe[[time_label, "value"]]
 
 # Plot the data, with proper labels and titles:
-plot = columns.plot(kind="line", x=time_label, y="value", figsize=(10, 5), marker="o")
+plot = columns.plot(kind="line", x=time_label, y="value", figsize=(10, 5), style="o:")
 
 # We want to use the categories' names, not their dimensions'...
 recurrence_category = dataframe[recurrence_label][0]
@@ -89,6 +90,11 @@ reference_territory_category = dataframe[reference_territory_label][0]
 
 plot.set(title=series_metadata["label"], xlabel=f"{time_label} ({recurrence_category})", ylabel=unit_category)
 plot.legend([reference_territory_category])
+
+# Show an axis grid in the background:
+plot.grid("on", which="major", axis="y", linestyle="dotted", linewidth=0.5)
+plot.set_axisbelow(True)
+plot.set_xlim(right=pandas.Timestamp(time.time(), unit="s"))
 
 pyplot.show()
 
