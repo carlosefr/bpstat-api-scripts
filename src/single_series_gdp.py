@@ -39,6 +39,7 @@ series_id = "12518356"
 # dataset that is. In this case (single series) it doesn't matter which domain we use,
 # as long as it is one of the domains where the series is present.
 #
+print("Fetching series metadata...")
 series_url = f"{BPSTAT_API_URL}/series/?lang={LANGUAGE}&series_ids={series_id}"
 series_metadata = requests.get(series_url).json()[0]  # ...there is only one series.
 
@@ -46,8 +47,11 @@ domain_id = series_metadata["domain_ids"][0]  # ...just select the first statist
 dataset_id = series_metadata["dataset_id"]  # ...the dataset will contain the actual data for the series.
 
 # Fetch the series values over time (observations), in JSON-stat format:
+print("Fetching series observations...")
 dataset_url = f"{BPSTAT_API_URL}/domains/{domain_id}/datasets/{dataset_id}/?lang={LANGUAGE}&series_ids={series_id}"
 dataset_data = pyjstat.Dataset.read(dataset_url)
+
+print("Processing data...")
 
 # Convert it into a pandas dataframe:
 dataframe = dataset_data.write("dataframe")

@@ -36,6 +36,7 @@ series_ids = ["12468944", "12468945", "12468946", "12468947", "12468948", "12468
 # dataset that is. In this case (closely related series) it doesn't matter which domain
 # we use, as long as it is one of the domains where all the series are present.
 #
+print("Fetching series metadata...")
 series_ids_str = ",".join(series_ids)
 series_url = f"{BPSTAT_API_URL}/series/?lang={LANGUAGE}&series_ids={series_ids_str}"
 series_metadata = requests.get(series_url).json()
@@ -48,8 +49,11 @@ assert all(domain_id in s["domain_ids"] for s in series_metadata)
 assert all(dataset_id == s["dataset_id"] for s in series_metadata)
 
 # Fetch the series values over time (observations), in JSON-stat format:
+print("Fetching series observations...")
 dataset_url = f"{BPSTAT_API_URL}/domains/{domain_id}/datasets/{dataset_id}/?lang={LANGUAGE}&series_ids={series_ids_str}"
 dataset_data = pyjstat.Dataset.read(dataset_url)
+
+print("Processing data...")
 
 # Convert it into a pandas dataframe:
 dataframe = dataset_data.write("dataframe")
